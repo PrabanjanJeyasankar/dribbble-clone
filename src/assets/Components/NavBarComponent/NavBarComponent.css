@@ -35,7 +35,7 @@
   .search-bar {
     display: flex;
     flex-direction: row;
-    background-color: white;
+    background-color: #f4f5fb;
     align-items: center;
     padding: 16px 16px;
     border-radius: 60px;
@@ -43,6 +43,7 @@
   }
   
   .search-input {
+    background-color: #f4f5fb;
     border: none;
     padding: 0px 4px;
   }

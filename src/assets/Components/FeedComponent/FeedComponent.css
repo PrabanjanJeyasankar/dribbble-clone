@@ -1,0 +1,125 @@
+.container {
+  font-family: 'MonaSans';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-behavior: smooth;
+}
+
+.dropdown-filter select {
+  min-width: auto;
+  padding: 10px 16px 10px 10px;
+  width: auto;
+  border: 1.5px solid #e7e7e9e6;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.category-filter {
+  position: relative;
+}
+
+.category-filter svg {
+  height: 24px;
+  width: 24px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.categories {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  overflow-x: scroll;
+  height: 36px;
+  padding: 0 16px;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.categories a {
+  display: flex;
+  align-items: center;
+  border-radius: 9999999px;
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  user-select: none;
+  opacity: 1; /* Initial opacity */
+  transition: opacity 0.3s ease;
+}
+
+.categories a:hover {
+  opacity: 0.6;
+}
+
+.categories a:active {
+  background-color: #f8f7f4;
+}
+
+.category-filter .left-arrow,
+.category-filter .right-arrow {
+  position: absolute;
+  height: 100%;
+  width: 100px;
+  top: 0;
+  display: none;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.category-filter .left-arrow.active,
+.category-filter .right-arrow.active {
+  display: flex;
+}
+.category-filter .right-arrow {
+  right: 0;
+  justify-content: flex-end;
+  background: linear-gradient(to left, #fff 50%, transparent);
+}
+
+.category-filter .left-arrow {
+  background: linear-gradient(to right, #fff 50%, transparent);
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  border: 1.5px solid #e7e7e9;
+  box-shadow: none;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 9999999px;
+  color: #0d0c22;
+}
+.sub-navbar {
+  /* width: 100%; */
+  /* padding-left: 72px;
+  padding-right: 72px; */
+  padding: 12px 72px 0px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 760px) {
+  .categories {
+    width: 760px;
+    height: auto;
+    overflow: auto;
+    outline: none;
+    overflow-y: hidden;
+  }
+}
