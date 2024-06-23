@@ -1,17 +1,13 @@
 import React from 'react'
 import './App.css'
 import NavBarComponent from './assets/Components/NavBarComponent/NavBarComponent'
-import FeedComponent from './assets/Components/FeedComponent/FeedComponent'
-
+import ContextProvider from './ContextProvider'
 function App() {
-
   return (
-    <>
-     <NavBarComponent/>
-     <FeedComponent/>
-    </>
+    <ContextProvider>
+      <NavBarComponent />
+    </ContextProvider>
   )
 }
 
 export default App
-

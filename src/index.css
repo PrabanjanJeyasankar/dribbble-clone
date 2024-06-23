@@ -1,6 +1,7 @@
-:root {
-  /* background-color: #f8f7f4; */
+body {
   margin: 0;
+  /* box-sizing: border-box; */
+  /* width: 100vw; */
 }
 @font-face {
   font-family: 'MonaSans';
