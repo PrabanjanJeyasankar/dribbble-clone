@@ -7,12 +7,14 @@ import { IoHeart } from 'react-icons/io5'
 import { TbEyeFilled } from 'react-icons/tb'
 import { Bookmark, Heart } from 'lucide-react'
 import { ChatState } from '../../../ContextProvider'
+import FooterComponent from '../FooterComponent/FooterComponent'
 
 function FeedComponent() {
     const { searchQuery, data, setData, selectedFilter } = ChatState()
     const [noResults, setNoResults] = useState(false)
     const [overlayVisible, setOverlayVisible] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null)
+    const [loadingImage, setLoadingImage] = useState(true)
 
     const handleThumbnailClick = (item) => {
         setSelectedItem(item)
@@ -22,6 +24,10 @@ function FeedComponent() {
     const closeOverlay = () => {
         setOverlayVisible(false)
         setSelectedItem(null)
+    }
+
+    const handleImageLoaded = () => {
+        setLoadingImage(false)
     }
 
     useEffect(() => {
@@ -39,7 +45,7 @@ function FeedComponent() {
         const filteredData = filterData()
         setData(filteredData)
         setNoResults(filteredData.length === 0)
-    }, [selectedFilter, searchQuery])
+    }, [selectedFilter, searchQuery, setData])
 
     return (
         <>
@@ -57,9 +63,18 @@ function FeedComponent() {
                                 onClick={() => handleThumbnailClick(item)}>
                                 <div className='shot'>
                                     <div className='thumbnail-image'>
+                                        {loadingImage && (
+                                            <span className='loader'></span>
+                                        )}
                                         <img
                                             src={item.thumbnailImage}
                                             alt={item.thumbnailName}
+                                            onLoad={handleImageLoaded}
+                                            style={
+                                                loadingImage
+                                                    ? { visibility: 'hidden' }
+                                                    : {}
+                                            }
                                         />
                                         <div className='hover-effect'>
                                             <div className='hover-effect-info'>
@@ -109,7 +124,9 @@ function FeedComponent() {
                         onClose={closeOverlay}
                     />
                 )}
+                <FooterComponent/>
             </div>
+           
         </>
     )
 }

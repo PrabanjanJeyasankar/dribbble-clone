@@ -2,11 +2,16 @@
     margin: 0;
     padding: 24px 40px;
     display: flex;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
     font-family: 'MonaSans';
+    position: relative;
 }
-
+.dribbble-logo-center{
+    position: absolute;
+    left: 50%;
+}
 ul {
     display: flex;
     flex-direction: row;
@@ -66,5 +71,50 @@ li {
 @media (max-width: 1024px) {
     .NavBar {
         width: 100%;
+    }
+}
+
+@media (max-width: 2560px) and (min-width: 2041px) {
+    .dribbble-logo-left {
+        display: none;
+    }
+    .left-navbar ul {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 2040px) and (min-width: 1440px) {
+    .dribbble-logo-left {
+        display: none;
+    }
+    .left-navbar ul {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 1439px) and (min-width: 1025px) {
+    .dribbble-logo-left {
+        display: none;
+    }
+    .left-navbar ul {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .dribbble-logo-center {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+    .dribbble-logo-center {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .dribbble-logo-center {
+        display: none;
     }
 }
