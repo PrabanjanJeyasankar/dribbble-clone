@@ -5,7 +5,7 @@ const ChatContext = createContext()
 const ContextProvider = ({ children }) => {
     const [suggestions, setSuggestions] = useState([])
     const [searchQuery, setSearchQuery] = useState('')
-    const [selectedFilter, setSelectedFilter] = useState('following')
+    const [selectedFilter, setSelectedFilter] = useState('Following')
     const [data, setData] = useState([])
 
     return (

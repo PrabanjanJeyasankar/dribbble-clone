@@ -89,7 +89,7 @@ function FeedComponent() {
                                         </div>
                                         <div className='reach-counts'>
                                             <div className='likes'>
-                                                <IoHeart className='heart-icon' />
+                                                <IoHeart className='heart-icon-user-details' />
                                                 <p>{item.likesCount}</p>
                                             </div>
                                             <div className='views'>

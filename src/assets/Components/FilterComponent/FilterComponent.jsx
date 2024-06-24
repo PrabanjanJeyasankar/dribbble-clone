@@ -58,9 +58,9 @@ function FilterComponent() {
                     className='select-dropdown'
                     onChange={handleChange}
                     value={selectedFilter}>
-                    <option value='following'>Following</option>
-                    <option value='popular'>Popular</option>
-                    <option value='new & noteworthy'>New & Noteworthy</option>
+                    <option value='Following'>Following</option>
+                    <option value='Popular'>Popular</option>
+                    <option value='New & Noteworthy'>New & Noteworthy</option>
                 </select>
             </div>
             <div className='category-filter'>

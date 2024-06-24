@@ -71,7 +71,9 @@ import userImage33 from '../assets/img/user_images/user_image_33.png'
 import userImage34 from '../assets/img/user_images/user_image_34.png'
 import userImage35 from '../assets/img/user_images/user_image_35.png'
 import userImage36 from '../assets/img/user_images/user_image_36.png'
-
+const discover = [
+    
+]
 const data = [
     {
         id: 1,
@@ -79,7 +81,7 @@ const data = [
         userImage: userImage1,
         thumbnailName: 'Astronaut 3D Modelling',
         thumbnailImage: shotsImage1,
-        filters: 'following',
+        filters: 'Following',
         likesCount: 50,
         viewsCount: 95,
     },
@@ -89,7 +91,7 @@ const data = [
         userImage: userImage2,
         thumbnailName: 'Awesome Design',
         thumbnailImage: shotsImage2,
-        filters: 'following',
+        filters: 'Following',
         likesCount: 35,
         viewsCount: 75,
     },
@@ -99,7 +101,7 @@ const data = [
         userImage: userImage3,
         thumbnailName: 'Creative Shot',
         thumbnailImage: shotsImage3,
-        filters: 'following',
+        filters: 'Following',
         likesCount: 70,
         viewsCount: 110,
     },
@@ -109,7 +111,7 @@ const data = [
         userImage: userImage4,
         thumbnailName: 'Popular Logo',
         thumbnailImage: shotsImage4,
-        filters: 'popular',
+        filters: 'Popular',
         likesCount: 160,
         viewsCount: 270,
     },
@@ -119,7 +121,7 @@ const data = [
         userImage: userImage5,
         thumbnailName: 'Stunning Design',
         thumbnailImage: shotsImage5,
-        filters: 'popular',
+        filters: 'Popular',
         likesCount: 210,
         viewsCount: 320,
     },
@@ -129,7 +131,7 @@ const data = [
         userImage: userImage6,
         thumbnailName: 'Artistic Shot',
         thumbnailImage: shotsImage6,
-        filters: 'popular',
+        filters: 'Popular',
         likesCount: 190,
         viewsCount: 310,
     },
@@ -139,7 +141,7 @@ const data = [
         userImage: userImage7,
         thumbnailName: 'Newsworthy Logo',
         thumbnailImage: shotsImage7,
-        filters: 'new & noteworthy',
+        filters: 'New & Noteworthy',
         likesCount: 85,
         viewsCount: 140,
     },
@@ -149,7 +151,7 @@ const data = [
         userImage: userImage8,
         thumbnailName: 'Highlight Design',
         thumbnailImage: shotsImage8,
-        filters: 'new & noteworthy',
+        filters: 'New & Noteworthy',
         likesCount: 100,
         viewsCount: 150,
     },
@@ -159,7 +161,7 @@ const data = [
         userImage: userImage9,
         thumbnailName: 'Impressive Shot',
         thumbnailImage: shotsImage9,
-        filters: 'new & noteworthy',
+        filters: 'New & Noteworthy',
         likesCount: 95,
         viewsCount: 160,
     },
