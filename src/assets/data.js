@@ -85,9 +85,9 @@ const data = [
     },
     {
         id: 2,
-        userName: 'Emily Brown',
+        userName: 'Amily Brown',
         userImage: userImage2,
-        thumbnailName: 'Awesome Design',
+        thumbnailName: 'Just Awesome Design',
         thumbnailImage: shotsImage2,
         filters: 'Following',
         likesCount: 35,

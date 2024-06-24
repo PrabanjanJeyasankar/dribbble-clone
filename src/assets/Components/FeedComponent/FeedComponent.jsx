@@ -33,19 +33,22 @@ function FeedComponent() {
     useEffect(() => {
         const filterData = () => {
             let filteredData = feedData.filter((item) => {
+                const thumbnailNameLower = item.thumbnailName.toLowerCase()
+                const userNameLower = item.userName.toLowerCase()
+                const searchQueryLower = searchQuery.toLowerCase()
                 return (
                     item.filters === selectedFilter &&
-                    item.thumbnailName
-                        .toLowerCase()
-                        .includes(searchQuery.toLowerCase())
+                    (thumbnailNameLower.startsWith(searchQueryLower) ||
+                        userNameLower.startsWith(searchQueryLower))
                 )
             })
             return filteredData
         }
+
         const filteredData = filterData()
         setData(filteredData)
         setNoResults(filteredData.length === 0)
-    }, [selectedFilter, searchQuery, setData])
+    }, [selectedFilter, searchQuery, feedData])
 
     return (
         <>
@@ -124,9 +127,8 @@ function FeedComponent() {
                         onClose={closeOverlay}
                     />
                 )}
-                <FooterComponent/>
+                <FooterComponent />
             </div>
-           
         </>
     )
 }
