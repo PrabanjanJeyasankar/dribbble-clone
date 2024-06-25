@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react'
 import './FilterComponent.css'
 import { ChatState } from '../../../ContextProvider'
+import feedData from '../../data'
 
 function FilterComponent() {
-    const { selectedFilter, setSelectedFilter } = ChatState()
+    const { selectedFilter, setSelectedFilter, data, setData } = ChatState()
     const [scrollX, setScrollX] = useState(0)
     const [scrollEnd, setScrollEnd] = useState(false)
     const scroll = useRef(null)
+    // const [defaultFilter, setDefaultFilter] = useState('discover')
 
     const slideLeft = () => {
         const shift = -300
@@ -14,7 +16,6 @@ function FilterComponent() {
             left: shift,
             behavior: 'smooth',
         })
-
         setScrollX(scrollX + shift)
         updateScrollEnd()
     }
@@ -25,7 +26,6 @@ function FilterComponent() {
             left: shift,
             behavior: 'smooth',
         })
-
         setScrollX(scrollX + shift)
         updateScrollEnd()
     }
@@ -47,8 +47,26 @@ function FilterComponent() {
         setScrollX(scroll.current.scrollLeft)
         updateScrollEnd()
     }
-    const handleChange = (event) => {
-        setSelectedFilter(event.target.value)
+
+    const handleChangeDropdown = (event) => {
+        const selectedValue = event.target.value
+        setSelectedFilter(selectedValue)
+
+        if (selectedValue === 'Following') {
+            setData(feedData)
+        } else if (selectedValue === 'Popular') {
+            setData(
+                feedData.filter(
+                    (item) => item.category.toLowerCase() === 'popular'
+                )
+            )
+        } else if (selectedValue === 'New & Noteworthy') {
+            setData(
+                feedData.filter(
+                    (item) => item.category.toLowerCase() === 'new & noteworthy'
+                )
+            )
+        }
     }
 
     return (
@@ -56,8 +74,8 @@ function FilterComponent() {
             <div className='dropdown-filter'>
                 <select
                     className='select-dropdown'
-                    onChange={handleChange}
-                    value={selectedFilter}>
+                    onChange={handleChangeDropdown}
+                    value={selectedFilter || 'Following'}>
                     <option value='Following'>Following</option>
                     <option value='Popular'>Popular</option>
                     <option value='New & Noteworthy'>New & Noteworthy</option>
@@ -84,57 +102,84 @@ function FilterComponent() {
                     </svg>
                 </div>
                 <div ref={scroll} onScroll={scrollCheck} className='categories'>
+                    <div onClick={() => setData(feedData)}>Discover</div>
                     <div
                         onClick={() =>
-                            handleChange({ target: { value: 'discover' } })
-                        }>
-                        Discover
-                    </div>
-                    <div
-                        onClick={() =>
-                            handleChange({ target: { value: 'animation' } })
+                            setData(
+                                feedData.filter((item) =>
+                                    item.tags.includes('animation')
+                                )
+                            )
                         }>
                         Animation
                     </div>
                     <div
                         onClick={() =>
-                            handleChange({ target: { value: 'branding' } })
+                            setData(
+                                feedData.filter((item) =>
+                                    item.tags.includes('branding')
+                                )
+                            )
                         }>
                         Branding
                     </div>
                     <div
                         onClick={() =>
-                            handleChange({ target: { value: 'illustration' } })
+                            setData(
+                                feedData.filter((item) =>
+                                    item.tags.includes('illustration')
+                                )
+                            )
                         }>
                         Illustration
                     </div>
                     <div
                         onClick={() =>
-                            handleChange({ target: { value: 'mobile' } })
+                            setData(
+                                feedData.filter((item) =>
+                                    item.tags.includes('mobile')
+                                )
+                            )
                         }>
                         Mobile
                     </div>
                     <div
                         onClick={() =>
-                            handleChange({ target: { value: 'print' } })
+                            setData(
+                                feedData.filter((item) =>
+                                    item.tags.includes('print')
+                                )
+                            )
                         }>
                         Print
                     </div>
                     <div
                         onClick={() =>
-                            handleChange({ target: { value: 'productDesign' } })
+                            setData(
+                                feedData.filter((item) =>
+                                    item.tags.includes('productDesign')
+                                )
+                            )
                         }>
                         Product Design
                     </div>
                     <div
                         onClick={() =>
-                            handleChange({ target: { value: 'typography' } })
+                            setData(
+                                feedData.filter((item) =>
+                                    item.tags.includes('typography')
+                                )
+                            )
                         }>
                         Typography
                     </div>
                     <div
                         onClick={() =>
-                            handleChange({ target: { value: 'webDesign' } })
+                            setData(
+                                feedData.filter((item) =>
+                                    item.tags.includes('webDesign')
+                                )
+                            )
                         }>
                         Web Design
                     </div>

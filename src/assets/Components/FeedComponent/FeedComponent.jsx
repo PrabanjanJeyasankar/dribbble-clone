@@ -11,6 +11,7 @@ import FooterComponent from '../FooterComponent/FooterComponent'
 
 function FeedComponent() {
     const { searchQuery, data, setData, selectedFilter } = ChatState()
+    console.log(data)
     const [noResults, setNoResults] = useState(false)
     const [overlayVisible, setOverlayVisible] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null)
@@ -32,12 +33,13 @@ function FeedComponent() {
 
     useEffect(() => {
         const filterData = () => {
-            let filteredData = feedData.filter((item) => {
+            const filteredData = feedData.filter((item) => {
                 const thumbnailNameLower = item.thumbnailName.toLowerCase()
                 const userNameLower = item.userName.toLowerCase()
                 const searchQueryLower = searchQuery.toLowerCase()
+
                 return (
-                    item.filters === selectedFilter &&
+                    (selectedFilter === 'Following' || item.category.toLowerCase() === selectedFilter.toLowerCase()) &&
                     (thumbnailNameLower.startsWith(searchQueryLower) ||
                         userNameLower.startsWith(searchQueryLower))
                 )
@@ -48,7 +50,7 @@ function FeedComponent() {
         const filteredData = filterData()
         setData(filteredData)
         setNoResults(filteredData.length === 0)
-    }, [selectedFilter, searchQuery, feedData])
+    }, [selectedFilter, searchQuery])
 
     return (
         <>
