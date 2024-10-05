@@ -9,9 +9,9 @@ function App() {
     return (
         <ContextProvider>
             <div className='app'>
+
                 <NavBarComponent />
                 <FeedComponent />
-                {/* <FooterComponent /> */}
             </div>
         </ContextProvider>
     )

@@ -1,0 +1,51 @@
+:root {
+    font-family: 'MonaSans';
+  }
+  .hero-marquee{
+      margin-top: 72px;
+  }
+  .marquee-images {
+    display: grid;
+    position: relative;
+    margin: 14px;
+  }
+  .marquee-image {
+    font-size: small;
+    height: 340px;
+    width: 273px;
+    border-radius: 30px;
+    object-fit: cover;
+  }
+  
+  .marquee-persona-info {
+    font-size: small;
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    color: white;
+  }
+  
+  .marquee-name {
+    font-size: small;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 4px;
+  }
+  .marquee-prof {
+    font-size: small;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 12px;
+  }
+  .skill-sets p {
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+    padding: 6px 14px;
+    border: 0.1px solid rgba(255, 255, 255, 0.276);
+    border-radius: 14px;
+    cursor: pointer;
+    color: white;
+    margin: 0px 4px;
+  }
+  
