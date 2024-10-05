@@ -5,9 +5,9 @@
     justify-content: center;
     padding-top: 80px;
     text-align: center;
-  }
-  
-  .hero-badge {
+}
+
+.hero-badge {
     font-family: 'Source Serif 4';
     font-weight: 900;
     color: #0d0c22;
@@ -17,27 +17,27 @@
     padding: 10px 16px;
     font-weight: bold;
     animation: change-color-anim 32s linear infinite;
-  }
-  
-  @keyframes change-color-anim {
+}
+
+@keyframes change-color-anim {
     0% {
-      background-color: #ffda79;
+        background-color: #ffda79;
     }
     25% {
-      background-color: #ffabe7;
+        background-color: #ffabe7;
     }
     50% {
-      background-color: #d2bcf3;
+        background-color: #d2bcf3;
     }
     75% {
-      background-color: #edf3d8;
+        background-color: #edf3d8;
     }
     100% {
-      background-color: #ffda79;
+        background-color: #ffda79;
     }
-  }
-  
-  .hero-heading {
+}
+
+.hero-heading {
     font-size: 78px;
     font-family: 'Source Serif 4';
     font-weight: 600;
@@ -45,17 +45,17 @@
     line-height: 72px;
     margin-top: 40px;
     margin-bottom: 24px;
-  }
-  
-  .hero-sub-heading {
+}
+
+.hero-sub-heading {
     font-family: 'MonaSans';
     font-size: 20px;
     font-weight: 500;
     line-height: 36px;
     margin: 0;
-  }
-  
-  .get-started-btn {
+}
+
+.get-started-btn {
     font-family: 'MonaSans';
     font-size: 14px;
     font-weight: 600;
@@ -68,9 +68,8 @@
     border: none;
     cursor: pointer;
     transition: opacity 0.2s ease;
-  }
-  
-  .get-started-btn:hover {
+}
+
+.get-started-btn:hover {
     opacity: 0.6;
-  }
-  
+}

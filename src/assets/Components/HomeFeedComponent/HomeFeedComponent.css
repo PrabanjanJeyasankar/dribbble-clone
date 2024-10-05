@@ -1,0 +1,32 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6rem;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.home-heading {
+    margin: 3rem 0 0 0;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.browse-more-link {
+    font-family: 'MonaSans';
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 20px 28px;
+    border: 1.4px solid black;
+    border-radius: 30px;
+    margin-top: 32px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    margin-bottom: 8rem;
+}

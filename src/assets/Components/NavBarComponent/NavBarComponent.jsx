@@ -3,11 +3,17 @@ import './NavBarComponent.css'
 import userProfileImage from '../../img/user_images/user_profile_image.jpg'
 import { ChatState } from '../../../ContextProvider'
 import { dribbbleLogoPath, searchIcon } from '../../svgPath'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function NavBarComponent() {
-    const { searchQuery, setSearchQuery, suggestions, updateSuggestions } =
-        ChatState()
+    const {
+        searchQuery,
+        setSearchQuery,
+        suggestions,
+        updateSuggestions,
+        setSelectedFilter,
+        resetSearchResults,
+    } = ChatState()
     const [searchValue, setSearchValue] = useState('')
     const [isActive, setIsActive] = useState(false)
     const inputRef = useRef(null)
@@ -18,6 +24,8 @@ function NavBarComponent() {
             if (inputRef.current && !inputRef.current.contains(event.target)) {
                 setSearchValue('')
                 setIsActive(false)
+                resetSearchResults()
+                setSelectedFilter('Following')
             }
         }
 
@@ -33,12 +41,18 @@ function NavBarComponent() {
         setSearchValue(query)
         setIsActive(true)
         updateSuggestions(query)
+
+        if (query.trim() === '') {
+            resetSearchResults()
+            setSelectedFilter('Following')
+        }
     }
 
     const handleSuggestionClick = (suggestion) => {
         setIsActive(false)
         setSearchValue(suggestion.thumbnailName)
         setSearchQuery(suggestion.thumbnailName)
+        navigate('/search', { replace: true })
     }
 
     const handleKeyDown = (event) => {
@@ -46,22 +60,27 @@ function NavBarComponent() {
             event.preventDefault()
             setIsActive(false)
             setSearchQuery(searchValue)
+            navigate('/search', { replace: true })
         }
     }
 
     return (
         <div className='NavBar'>
             <div className='left-navbar'>
-                <svg
-                    className='dribbble-logo-left'
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='90'
-                    height='30'
-                    viewBox='0 0 210 59'
-                    fill='#000000'>
-                    <title>Dribbble: the community for graphic design</title>
-                    <path d={dribbbleLogoPath}></path>
-                </svg>
+                <Link to='/' className='logo-link'>
+                    <svg
+                        className='dribbble-logo-left'
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='90'
+                        height='30'
+                        viewBox='0 0 210 59'
+                        fill='#000000'>
+                        <title>
+                            Dribbble: the community for graphic design
+                        </title>
+                        <path d={dribbbleLogoPath}></path>
+                    </svg>
+                </Link>
                 <ul>
                     <li>Find designers</li>
                     <li>Inspiration</li>
@@ -70,16 +89,18 @@ function NavBarComponent() {
                     <li>Go Pro</li>
                 </ul>
             </div>
-            <svg
-                className='dribbble-logo-center'
-                xmlns='http://www.w3.org/2000/svg'
-                width='90'
-                height='30'
-                viewBox='0 0 210 59'
-                fill='#000000'>
-                <title>Dribbble: the community for graphic design</title>
-                <path d={dribbbleLogoPath}></path>
-            </svg>
+            <Link to='/' className='logo-link'>
+                <svg
+                    className='dribbble-logo-center'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='90'
+                    height='30'
+                    viewBox='0 0 210 59'
+                    fill='#000000'>
+                    <title>Dribbble: the community for graphic design</title>
+                    <path d={dribbbleLogoPath}></path>
+                </svg>
+            </Link>
             <div className='right-navbar'>
                 <div
                     ref={inputRef}

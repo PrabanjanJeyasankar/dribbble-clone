@@ -12,9 +12,11 @@ function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
-function FeedComponent() {
-    const { searchQuery, setSearchQuery, data, setData, selectedFilter } = ChatState();
+// Updated to accept showFilters prop
+function FeedComponent({ showFilters = true }) {
+    const { searchQuery, data } = ChatState();
     const query = useQuery();
+    const [filteredData, setFilteredData] = useState(data);
     const [noResults, setNoResults] = useState(false);
     const [overlayVisible, setOverlayVisible] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
@@ -39,61 +41,70 @@ function FeedComponent() {
             const thumbnailNameLower = item.thumbnailName.toLowerCase();
             const userNameLower = item.userName.toLowerCase();
             const searchQueryLower = searchQuery.toLowerCase();
-            const selectedFilterLower = selectedFilter.toLowerCase();
-
-            // Check if the item matches the selected filter and the search query
-            const matchesFilter =
-                selectedFilterLower === 'following' || 
-                item.category.toLowerCase() === selectedFilterLower;
 
             const matchesSearch =
-                thumbnailNameLower.includes(searchQueryLower) || 
+                thumbnailNameLower.includes(searchQueryLower) ||
                 userNameLower.includes(searchQueryLower);
 
-            return matchesFilter && matchesSearch;
+            return matchesSearch;
         });
 
+        setFilteredData(filteredData);
         setNoResults(filteredData.length === 0);
-        
-        // Update data only if the filtered data is different
-        if (JSON.stringify(filteredData) !== JSON.stringify(data)) {
-            setData(filteredData);
-        }
-    }, [selectedFilter, searchQuery, data, setData]);
+    }, [searchQuery, data]);
 
     return (
         <div className='feed-container'>
-            <FilterComponent />
+            {showFilters && <FilterComponent />}
             {noResults ? (
                 <div className='no-results'>
                     No results found for "{searchQuery}": (
                 </div>
             ) : (
                 <div className='feed-shots-grid'>
-                    {data.map((item) => (
-                        <div key={item.id} onClick={() => handleThumbnailClick(item)}>
+                    {filteredData.map((item) => (
+                        <div
+                            key={item.id}
+                            onClick={() => handleThumbnailClick(item)}>
                             <div className='shot'>
                                 <div className='thumbnail-image'>
-                                    {loadingImage && <span className='loader'></span>}
+                                    {loadingImage && (
+                                        <span className='loader'></span>
+                                    )}
                                     <img
                                         src={item.thumbnailImage}
                                         alt={item.thumbnailName}
                                         onLoad={handleImageLoaded}
-                                        style={loadingImage ? { visibility: 'hidden' } : {}}
+                                        style={
+                                            loadingImage
+                                                ? { visibility: 'hidden' }
+                                                : {}
+                                        }
                                     />
                                     <div className='hover-effect'>
                                         <div className='hover-effect-info'>
-                                            <div className='thumbnail-name'>{item.thumbnailName}</div>
+                                            <div className='thumbnail-name'>
+                                                {item.thumbnailName}
+                                            </div>
                                             <div className='actions'>
-                                                <Bookmark strokeWidth={2} className='bookmark-icon' />
-                                                <Heart strokeWidth={2} className='heart-icon-hover-effect' />
+                                                <Bookmark
+                                                    strokeWidth={2}
+                                                    className='bookmark-icon'
+                                                />
+                                                <Heart
+                                                    strokeWidth={2}
+                                                    className='heart-icon-hover-effect'
+                                                />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='shot-details'>
                                     <div className='user-details'>
-                                        <img src={item.userImage} alt={item.userName} />
+                                        <img
+                                            src={item.userImage}
+                                            alt={item.userName}
+                                        />
                                         <p>{item.userName}</p>
                                     </div>
                                     <div className='reach-counts'>

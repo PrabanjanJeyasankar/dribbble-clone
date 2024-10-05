@@ -8,10 +8,13 @@
     font-family: 'MonaSans';
     position: relative;
 }
+
 .dribbble-logo-center {
     position: absolute;
     left: 50%;
+    top: 35%;
 }
+
 ul {
     display: flex;
     flex-direction: row;
@@ -48,7 +51,7 @@ li {
     background-color: #f4f5fb;
     align-items: center;
     padding: 16px 16px;
-    gap:4px;
+    gap: 4px;
     border-radius: 60px;
     border-width: 1px;
 }
@@ -63,7 +66,7 @@ li {
     outline: none;
 }
 
-.search input{
+.search input {
     outline: none;
     border: none;
     background-color: #f4f5fb;
