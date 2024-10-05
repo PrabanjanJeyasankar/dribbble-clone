@@ -9,8 +9,8 @@ const ContextProvider = ({ children }) => {
     const [selectedFilter, setSelectedFilter] = useState('Following')
     const [data, setData] = useState(feedData)
 
-    const updateSuggestions = (query) => {
-        const trimmedQuery = query.trim().toLowerCase()
+    const updateSuggestions = (searchQuery) => {
+        const trimmedQuery = searchQuery.trim().toLowerCase()
         setSearchQuery(trimmedQuery)
 
         if (trimmedQuery === '') {
@@ -18,13 +18,13 @@ const ContextProvider = ({ children }) => {
         } else {
             const filteredSuggestions = data.filter(
                 (item) =>
-                    item.userName.toLowerCase().startsWith(trimmedQuery) ||
-                    item.thumbnailName.toLowerCase().startsWith(trimmedQuery)
+                    item.userName.toLowerCase().includes(trimmedQuery) ||
+                    item.thumbnailName.toLowerCase().includes(trimmedQuery)
             )
-
             setSuggestions(filteredSuggestions)
         }
     }
+
     return (
         <ChatContext.Provider
             value={{
@@ -32,11 +32,11 @@ const ContextProvider = ({ children }) => {
                 setSuggestions,
                 searchQuery,
                 setSearchQuery,
-                data,
-                setData,
+                updateSuggestions,
                 selectedFilter,
                 setSelectedFilter,
-                updateSuggestions,
+                data,
+                setData,
             }}>
             {children}
         </ChatContext.Provider>

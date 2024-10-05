@@ -469,6 +469,17 @@ const data = [
         likesCount: 380,
         viewsCount: 450,
     },
+    {
+        id: 37,
+        userName: 'Victoria Clark',
+        userImage: userImage36,
+        thumbnailName: 'Web Design Excellence',
+        thumbnailImage: shotsImage22,
+        tags: ['webDesign', 'illustration'],
+        category: 'Popular',
+        likesCount: 380,
+        viewsCount: 450,
+    },
 ]
 // const data = [
 //     {

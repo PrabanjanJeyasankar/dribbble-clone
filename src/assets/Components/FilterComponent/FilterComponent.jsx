@@ -8,7 +8,6 @@ function FilterComponent() {
     const [scrollX, setScrollX] = useState(0)
     const [scrollEnd, setScrollEnd] = useState(false)
     const scroll = useRef(null)
-    // const [defaultFilter, setDefaultFilter] = useState('discover')
 
     const slideLeft = () => {
         const shift = -300
