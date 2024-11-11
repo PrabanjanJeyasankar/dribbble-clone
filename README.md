@@ -1,6 +1,6 @@
 # Dribbble Clone - Learning ReactJS
 
-Hosted Link : https://dribbble-clone-ghrkjfkaa-prabanjanjeyasankars-projects.vercel.app/
+Hosted Link : https://dribbble-clone-prabanjan.vercel.app/
 
 ## Project Overview
 This project is a clone of **Dribbble**, a popular platform for showcasing and discovering creative work. I created this project as part of my learning journey in **ReactJS** to enhance my understanding of component-based architecture, state management, routing, and modern web development practices.
